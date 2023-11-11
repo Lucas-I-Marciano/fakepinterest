@@ -1,0 +1,33 @@
+{% extends "homepage.html" %}
+
+<!-- Estou editando o bloco "titulo", que deixei aberto na "homepage.html", todo o resto vai ser copiado -->
+{% block titulo %} 
+Perfil - {{ usuario.username.lower().capitalize() }}
+{% endblock %}
+
+
+{% block body %}
+    {% include 'navbar.html' %}
+    <h1>Pagina de Perfil</h1>
+    <h2>Bem Vindo {{ usuario.username }}</h2> <!-- Para usar a variável do Python coloco {{ variavel }} -->
+
+    {% if form %}
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+
+        {{ form.foto() }}
+        {{ form.botao_confirmar }}
+
+    </form>
+    {% endif %}
+
+    {% for foto in usuario.fotos %}
+        <img src="{{ url_for('static', filename='fotos_post/{}'.format(foto.imagem)) }}">
+    {% endfor %}
+
+
+
+
+    <!-- Importante comentar que não posso ter routes com def static, já que essa função padrão chama a pasta static  -->
+    
+{% endblock %}

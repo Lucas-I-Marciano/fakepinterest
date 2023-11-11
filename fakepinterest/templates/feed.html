@@ -1,0 +1,49 @@
+{% extends "homepage.html" %}
+
+{% block body %}
+    <body>
+        {% include 'navbar.html' %}
+        <div class="container">
+            <div class="conteudo">
+                {% for foto in fotos %}
+                    <div class="bloco-imagem">
+                        <a href="{{ url_for('perfil', id_usuario = foto.id_usuario) }}">
+                            <img src="{{ url_for('static', filename='fotos_post/{}'.format(foto.imagem)) }}"/>
+                            <!-- Também poderia fazer foto.usuario.id por conta do BackRef que eu criei no models.py -->
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+
+{% endblock %}
+
+
+
+<body>
+    <div class="container">
+
+      
+        
+        <div class="bloco-imagem">
+          <img src="img/pinterest-2.jpg" alt="Pinterest 2" />
+        </div>
+        <div class="bloco-imagem">
+          <img src="img/pinterest-3.jpg" alt="Pinterest 3" />
+        </div>
+        <div class="bloco-imagem">
+          <img src="img/pinterest-4.jpg" alt="Pinterest 4" />
+        </div>
+        <div class="bloco-imagem">
+          <img src="img/pinterest-5.jpg" alt="Pinterest 5" />
+        </div>
+        <div class="bloco-imagem">
+          <img src="img/pinterest-6.jpg" alt="Pinterest 6" />
+        </div>
+        <div class="bloco-imagem">
+          <img src="img/pinterest-7.jpg" alt="Pinterest 7" />
+        </div>
+      </div>
+    </div>
+  </body>

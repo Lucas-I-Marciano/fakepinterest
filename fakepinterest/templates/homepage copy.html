@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block titulo %}
+        FakePinterest
+        {% endblock %}
+    </title>
+    <!-- Defino os Blocos que quero editar em outras páginas -->
+    <link rel="stylesheet" href=" {{ url_for('static', filename='css/style.css') }} ">
+</head>
+<body>
+    {% block body %}
+        <h1>Meu primeiro site no Ar</h1>
+
+        <h2>Agora vamos continuar nosso site</h2>
+
+        {% block formulario %}
+            <form method="POST">
+                <!-- Por causa de ser "POST" eu preciso liberar isso no routes.py -->
+                {{ form.csrf_token }}
+                <!-- Garantir a segurança do site -->
+                
+                {{ form.email.label }}
+                {{ form.email() }}<br>
+
+                {{ form.senha.label }}
+                {{ form.senha() }}<br>
+
+                {{ form.botao_confirmacao() }}
+
+            </form>
+            <a href="{{ url_for('criarconta') }}">Não Possui Conta? Clique aqui e inscreva-se Já :)</a>
+        {% endblock %}
+        
+
+    {% endblock %}
+</body>
+</html>
