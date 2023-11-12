@@ -21,7 +21,8 @@ def homepage() :
         if usuario and bcrypt.check_password_hash(usuario.senha, form_login.senha.data) : # Comparo a senha criptografada com a não criptografada (A do BD com a Preenchida)
             login_user(usuario)
             return redirect(url_for('perfil', id_usuario = usuario.id))
-    return render_template("homepage.html", form = FormLogin(), teste = database.session.query(Usuario).first().username, teste2=Usuario.query.filter_by(email='lucas@gmail.com').first().username)
+    return render_template("homepage.html", form = FormLogin())
+    # return render_template("homepage.html", form = FormLogin(), teste = database.session.query(Usuario).first().username, teste2=Usuario.query.filter_by(email='lucas@gmail.com').first().username)
 
 @app.route('/criar-conta', methods = ['GET', 'POST'])
 def criarconta ():
